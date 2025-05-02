@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills | KΛℨ₥ᴵ S¥ᴱÐ</title>
+    <style>
+        /* Base styles with animation variables */
+        :root {
+            --transition-duration: 0.5s;
+            --primary-color: #3498db;
+            --secondary-color: #2c3e50;
+            --text-color: #ecf0f1;
+            --bg-color: #1a1a2e;
+            --accent-color: #e74c3c;
+            --card-bg: rgba(255, 255, 255, 0.05);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            opacity: 0;
+            transition: opacity var(--transition-duration) ease-in-out;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        
+        /* Continuous rotation for logo */
+        @keyframes logo-spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Gradient animation for background */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Progress bar animation */
+        @keyframes progress-animation {
+            0% { width: 0%; }
+            100% { width: var(--skill-level); }
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* Wave animation for skill cards */
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        header {
+            background: rgba(26, 26, 46, 0.8);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: logo-spin 20s linear infinite;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color var(--transition-duration);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width var(--transition-duration);
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+        
+        .skills-section {
+            padding: 8rem 5% 4rem;
+            min-height: 100vh;
+            background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #1a1a2e);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        .skills-section h1 {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .skill-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transition: all var(--transition-duration);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .skill-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                to bottom right,
+                transparent,
+                transparent,
+                transparent,
+                var(--primary-color)
+            );
+            transform: rotate(30deg);
+            animation: wave 6s linear infinite;
+            opacity: 0.2;
+        }
+        
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: var(--primary-color);
+        }
+        
+        .skill-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .skill-card h3::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform var(--transition-duration) ease-in-out;
+        }
+        
+        .skill-card:hover h3::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
+        
+        .skill-card p {
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .skill-progress {
+            margin-top: 1.5rem;
+        }
+        
+        .skill-level {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-bottom: 0.5rem;
+        }
+        
+        .skill-level-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            border-radius: 4px;
+            width: 0;
+            animation: progress-animation 1.5s ease-out forwards;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+        
+        .skill-percent {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--primary-color);
+            opacity: 0;
+            transform: translateY(10px);
+            animation: fadeInUp 0.5s ease-out forwards;
+            animation-delay: calc(var(--i) * 0.2s + 1s);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .learning-badge {
+            display: inline-block;
+            background: rgba(231, 76, 60, 0.2);
+            color: var(--accent-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-left: 0.5rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .skills-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .skills-section h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">KΛℨ₥ᴵ S¥ᴱÐ</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skill.html" class="active">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact Me</a></li>
+                <li><a href="Hobbies.html">Hobbies</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="skills-section">
+        <h1>My Skills</h1>
+        <div class="skills-container">
+            <div class="skill-card">
+                <h3>C++</h3>
+                <p>Strong foundation in OOP, algorithms, and problem-solving with 2+ years of experience.</p>
+                <div class="skill-progress">
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="--skill-level: 90%; --i: 0"></div>
+                    </div>
+                    <div class="skill-percent" style="--i: 0">90%</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>C#</h3>
+                <p>Comfortable with game development and desktop applications. Unity experience.</p>
+                <div class="skill-progress">
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="--skill-level: 75%; --i: 1"></div>
+                    </div>
+                    <div class="skill-percent" style="--i: 1">75%</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>HTML & CSS</h3>
+                <p>Modern responsive web design with CSS animations and transitions.</p>
+                <div class="skill-progress">
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="--skill-level: 80%; --i: 2"></div>
+                    </div>
+                    <div class="skill-percent" style="--i: 2">80%</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Python <span class="learning-badge">Learning</span></h3>
+                <p>Currently exploring AI, Data Science, and automation projects.</p>
+                <div class="skill-progress">
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="--skill-level: 60%; --i: 3"></div>
+                    </div>
+                    <div class="skill-percent" style="--i: 3">60%</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>JavaScript</h3>
+                <p>Building interactive web applications and learning modern frameworks.</p>
+                <div class="skill-progress">
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="--skill-level: 65%; --i: 4"></div>
+                    </div>
+                    <div class="skill-percent" style="--i: 4">65%</div>
+                </div>
+            </div>
+            <div class="skill-card">
+                <h3>Arduino</h3>
+                <p>IoT projects and hardware programming with sensors and actuators.</p>
+                <div class="skill-progress">
+                    <div class="skill-level">
+                        <div class="skill-level-bar" style="--skill-level: 70%; --i: 5"></div>
+                    </div>
+                    <div class="skill-percent" style="--i: 5">70%</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add transition duration as CSS variable
+            document.documentElement.style.setProperty('--transition-duration', '0.5s');
+            
+            const navLinks = document.querySelectorAll('nav a');
+            
+            // Function to handle navigation
+            function navigate(event) {
+                event.preventDefault();
+                const href = this.getAttribute('href');
+                
+                // Fade out transition
+                document.body.classList.add('fade-out');
+                
+                // Wait for the transition to complete, then navigate
+                setTimeout(() => {
+                    window.location.href = href;
+                }, parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--transition-duration')) * 1000);
+            }
+            
+            // Attach the event listener to each nav link
+            navLinks.forEach(link => {
+                link.addEventListener('click', navigate);
+            });
+            
+            // Function to add 'loaded' class with a delay
+            function addLoadedClass() {
+                document.body.classList.add('loaded');
+            }
+            
+            // Delay adding the 'loaded' class to ensure initial transition
+            setTimeout(addLoadedClass, 50);
+            
+            // Add random floating animation to skill cards
+            const skillCards = document.querySelectorAll('.skill-card');
+            skillCards.forEach((card, index) => {
+                // Random float parameters for each card
+                const duration = 6 + Math.random() * 4;
+                const delay = Math.random() * 2;
+                const distance = 5 + Math.random() * 10;
+                
+                card.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                card.style.setProperty('--float-distance', `${distance}px`);
+            });
+        });
+    </script>    
+
+    <footer>
+        <p>&copy; 2025 KΛℨ₥ᴵ S¥ᴱÐ | All rights reserved.</p>
+    </footer>
+</body>
+</html>

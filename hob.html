@@ -1,0 +1,495 @@
+<section class="hobbies-section">
+    <div class="container">
+      <h2 class="section-title">My Playbook</h2>
+      
+      <!-- Daily Rhythm Visualization -->
+      <div class="daily-rhythm">
+        <div class="time-marker" style="--pos: 10%">
+          <span>7AM</span>
+          <div class="activity-icon">🍵</div>
+          <p>Morning Tea</p>
+        </div>
+        <div class="time-marker" style="--pos: 25%">
+          <span>9AM</span>
+          <div class="activity-icon">💻</div>
+          <p>Code Session</p>
+        </div>
+        <div class="time-marker" style="--pos: 40%">
+          <span>12PM</span>
+          <div class="activity-icon">🍕</div>
+          <p>Pizza Time</p>
+        </div>
+        <div class="time-marker" style="--pos: 55%">
+          <span>3PM</span>
+          <div class="activity-icon">🏋️</div>
+          <p>Gym</p>
+        </div>
+        <div class="time-marker" style="--pos: 70%">
+          <span>7PM</span>
+          <div class="activity-icon">🍔</div>
+          <p>Burger & Code</p>
+        </div>
+        <div class="time-marker" style="--pos: 85%">
+          <span>11PM</span>
+          <div class="activity-icon">🎮</div>
+          <p>Free Fire</p>
+        </div>
+        <div class="timeline"></div>
+      </div>
+  
+      <div class="hobby-grid">
+        
+        <!-- Gaming Card (Enhanced) -->
+        <div class="hobby-card game-card">
+          <div class="hobby-icon">🎮</div>
+          <h3>Free Fire Dominator</h3>
+          <div class="game-stats">
+            <div class="stat">
+              <span>Grandmaster</span>
+              <small>Current Rank</small>
+            </div>
+            <div class="stat">
+              <span>12</span>
+              <small>Booyahs</small>
+            </div>
+            <div class="stat">
+              <span>78%</span>
+              <small>Top 5 Rate</small>
+            </div>
+          </div>
+          <div class="achievements">
+            <div class="achievement">
+              <span>🔥</span> 20 Kill Record
+            </div>
+            <div class="achievement">
+              <span>🏆</span> Squad MVP x56
+            </div>
+          </div>
+        </div>
+  
+        <!-- Foodie Card -->
+        <div class="hobby-card food-card">
+          <div class="food-icons">
+            <div class="food-icon">🍵</div>
+            <div class="food-icon">🍕</div>
+            <div class="food-icon">🍔</div>
+            <div class="food-icon">🥤</div>
+          </div>
+          <h3>Fuel Station</h3>
+          <div class="food-preferences">
+            <div class="preference">
+              <span>Tea:</span> Kashmiri Chai 3x/day
+            </div>
+            <div class="preference">
+              <span>Pizza:</span> Pepperoni + Extra Cheese
+            </div>
+            <div class="preference">
+              <span>Burger:</span> Double Patty + Bacon
+            </div>
+            <div class="preference">
+              <span>Drink:</span> Mountain Dew Code Fuel
+            </div>
+          </div>
+        </div>
+  
+        <!-- Coding Card -->
+        <div class="hobby-card code-card">
+          <div class="hobby-icon">💻</div>
+          <h3>Coding Marathons</h3>
+          <div class="coding-stats">
+            <div class="stat">
+              <span>5+</span>
+              <small>Hours Daily</small>
+            </div>
+            <div class="stat">
+              <span>3</span>
+              <small>Coffee Cups</small>
+            </div>
+            <div class="stat">
+              <span>27</span>
+              <small>Tabs Open</small>
+            </div>
+          </div>
+          <div class="current-project">
+            <span>⟫</span> Building AI chatbot
+          </div>
+        </div>
+  
+        <!-- Gym Card -->
+        <div class="hobby-card gym-card">
+          <div class="hobby-icon">🏋️</div>
+          <h3>Iron Temple</h3>
+          <div class="workout-stats">
+            <div class="stat">
+              <span>4x</span>
+              <small>Weekly</small>
+            </div>
+            <div class="stat">
+              <span>225</span>
+              <small>Bench PR (lbs)</small>
+            </div>
+          </div>
+          <div class="split-routine">
+            <div class="day">Mon: Chest</div>
+            <div class="day">Wed: Back</div>
+            <div class="day">Fri: Legs</div>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  <style>
+  :root {
+    --code-color: #60a5fa;
+    --gym-color: #f87171;
+    --game-color: #fbbf24;
+    --food-color: #34d399;
+    --timeline-color: #7c3aed;
+    --dark-bg: #0f172a;
+    --card-bg: rgba(15, 23, 42, 0.7);
+  }
+  
+  .hobbies-section {
+    padding: 4rem 2rem;
+    background: var(--dark-bg);
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #38bdf8;
+    margin-bottom: 3rem;
+  }
+  
+  /* Daily Rhythm */
+  .daily-rhythm {
+    position: relative;
+    height: 120px;
+    margin: 0 auto 3rem;
+    max-width: 800px;
+  }
+  
+  .timeline {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: rgba(124, 58, 237, 0.3);
+    transform: translateY(-50%);
+  }
+  
+  .timeline::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(90deg, 
+      rgba(124, 58, 237, 0) 0%, 
+      var(--timeline-color) 50%, 
+      rgba(124, 58, 237, 0) 100%);
+    animation: timeline-pulse 3s infinite;
+  }
+  
+  @keyframes timeline-pulse {
+    0% { opacity: 0; }
+    50% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  
+  .time-marker {
+    position: absolute;
+    top: 50%;
+    left: var(--pos);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    width: 80px;
+  }
+  
+  .time-marker span {
+    display: block;
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-bottom: 0.5rem;
+  }
+  
+  .activity-icon {
+    font-size: 1.8rem;
+    background: var(--dark-bg);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: 2px solid var(--timeline-color);
+    transition: all 0.3s ease;
+  }
+  
+  .time-marker:hover .activity-icon {
+    transform: scale(1.2);
+    box-shadow: 0 0 15px var(--timeline-color);
+  }
+  
+  .time-marker p {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: #64748b;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  
+  .time-marker:hover p {
+    opacity: 1;
+  }
+  
+  /* Hobby Grid */
+  .hobby-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .hobby-card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border-top: 4px solid;
+    backdrop-filter: blur(5px);
+  }
+  
+  .code-card { border-color: var(--code-color); }
+  .gym-card { border-color: var(--gym-color); }
+  .game-card { border-color: var(--game-color); }
+  .food-card { border-color: var(--food-color); }
+  
+  .hobby-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .hobby-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  .hobby-card:hover .hobby-icon {
+    transform: scale(1.2) rotate(10deg);
+  }
+  
+  h3 {
+    color: white;
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    text-align: center;
+  }
+  
+  /* Game Card */
+  .game-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem 0;
+  }
+  
+  .game-stats .stat {
+    text-align: center;
+  }
+  
+  .game-stats span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--game-color);
+    display: block;
+  }
+  
+  .game-stats small {
+    font-size: 0.7rem;
+    color: #94a3b8;
+  }
+  
+  .achievements {
+    margin-top: 1rem;
+  }
+  
+  .achievement {
+    background: rgba(251, 191, 36, 0.1);
+    border: 1px solid rgba(251, 191, 36, 0.3);
+    border-radius: 50px;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+  }
+  
+  /* Food Card */
+  .food-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .food-icon {
+    font-size: 2rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(52, 211, 153, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+  
+  .food-card:hover .food-icon {
+    transform: translateY(-5px);
+    background: rgba(52, 211, 153, 0.2);
+  }
+  
+  .food-preferences {
+    text-align: left;
+  }
+  
+  .preference {
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    color: #e2e8f0;
+  }
+  
+  .preference span {
+    color: var(--food-color);
+    font-weight: bold;
+  }
+  
+  /* Coding Card */
+  .coding-stats {
+    display: flex;
+    justify-content: space-around;
+    margin: 1.5rem 0;
+  }
+  
+  .coding-stats .stat {
+    text-align: center;
+  }
+  
+  .coding-stats span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--code-color);
+    display: block;
+  }
+  
+  .coding-stats small {
+    font-size: 0.7rem;
+    color: #94a3b8;
+  }
+  
+  .current-project {
+    background: rgba(96, 165, 250, 0.1);
+    border-left: 3px solid var(--code-color);
+    padding: 0.8rem;
+    margin-top: 1rem;
+    font-family: monospace;
+    color: #e2e8f0;
+  }
+  
+  /* Gym Card */
+  .workout-stats {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1.5rem 0;
+  }
+  
+  .workout-stats .stat {
+    text-align: center;
+  }
+  
+  .workout-stats span {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--gym-color);
+    display: block;
+  }
+  
+  .workout-stats small {
+    font-size: 0.7rem;
+    color: #94a3b8;
+  }
+  
+  .split-routine {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 1rem;
+  }
+  
+  .split-routine .day {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    text-align: center;
+  }
+  
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hobby-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+    
+    .daily-rhythm {
+      height: 150px;
+    }
+    
+    .time-marker {
+      width: 60px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .hobby-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .section-title {
+      font-size: 2rem;
+    }
+    
+    .daily-rhythm {
+      height: 200px;
+      margin-bottom: 2rem;
+    }
+    
+    .time-marker {
+      top: var(--pos);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    
+    .timeline {
+      top: 0;
+      left: 50%;
+      width: 4px;
+      height: 100%;
+      transform: translateX(-50%);
+    }
+    
+    .timeline::after {
+      background: linear-gradient(0deg, 
+        rgba(124, 58, 237, 0) 0%, 
+        var(--timeline-color) 50%, 
+        rgba(124, 58, 237, 0) 100%);
+    }
+  }
+  </style>
